@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Gerenciador_de_Tarefas"
+rootProject.name = "GerenciarTarefas"
 include(":app")
  

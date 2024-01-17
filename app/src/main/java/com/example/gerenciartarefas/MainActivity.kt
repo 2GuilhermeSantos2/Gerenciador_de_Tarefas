@@ -1,4 +1,4 @@
-package com.example.gerenciador_de_tarefas
+package com.example.gerenciartarefas
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -12,7 +12,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.gerenciador_de_tarefas.ui.theme.Gerenciador_de_TarefasTheme
+
 
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class)

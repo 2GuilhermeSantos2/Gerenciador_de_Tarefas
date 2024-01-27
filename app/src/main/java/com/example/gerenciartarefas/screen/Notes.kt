@@ -1,5 +1,6 @@
-package com.example.gerenciartarefas
+package com.example.gerenciartarefas.screen
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -34,10 +35,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.gerenciartarefas.R
 import kotlinx.coroutines.launch
 
 
-class MainActivity : ComponentActivity() {
+class Notes : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -160,20 +162,20 @@ class MainActivity : ComponentActivity() {
                                 .height(47.dp)
                                 .clickable {
                                     Toast
-                                        .makeText(localView, "Arquivo", Toast.LENGTH_SHORT)
+                                        .makeText(localView, "Arquivar", Toast.LENGTH_SHORT)
                                         .show()
                                 },
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             Icon(
                                 painter = painterResource(R.drawable.baseline_move_to_inbox_24),
-                                contentDescription = "Arquivo",
+                                contentDescription = "Arquivar",
                                 modifier = Modifier.size(40.dp), tint = Color.White
                             )
 
                             Spacer(Modifier.width(25.dp))
                             Text(
-                                text = "Arquivo",
+                                text = "Arquivar",
                                 color = Color.White,
                                 fontSize = 20.sp,
 
@@ -214,14 +216,15 @@ class MainActivity : ComponentActivity() {
 
                         Spacer(Modifier.height(10.dp))
 
+                        val context = LocalContext.current
+
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .height(47.dp)
                                 .clickable {
-                                    Toast
-                                        .makeText(localView, "Configurações", Toast.LENGTH_SHORT)
-                                        .show()
+                                           val intent = Intent(context, Settings::class.java)
+                                    context.startActivity(intent)
                                 },
                             verticalAlignment = Alignment.CenterVertically
                         ) {

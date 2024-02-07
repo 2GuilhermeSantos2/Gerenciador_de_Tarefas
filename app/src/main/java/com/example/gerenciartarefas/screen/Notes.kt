@@ -93,6 +93,7 @@ class Notes : ComponentActivity() {
                         }
 
                         Spacer(Modifier.height(10.dp))
+                        val contextReminder = LocalContext.current
 
 
                         Row(
@@ -100,9 +101,9 @@ class Notes : ComponentActivity() {
                                 .fillMaxWidth()
                                 .height(47.dp)
                                 .clickable {
-                                    Toast
-                                        .makeText(localView, "Lembrentes", Toast.LENGTH_SHORT)
-                                        .show()
+                                    val intent = Intent(contextReminder, Reminder::class.java)
+                                    contextReminder.startActivity(intent)
+
                                 },
                             verticalAlignment = Alignment.CenterVertically
                         ) {
@@ -156,14 +157,17 @@ class Notes : ComponentActivity() {
 
                         Spacer(Modifier.height(10.dp))
 
+                        val contextArchive = LocalContext.current
+
+
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .height(47.dp)
                                 .clickable {
-                                    Toast
-                                        .makeText(localView, "Arquivar", Toast.LENGTH_SHORT)
-                                        .show()
+                                    val intent = Intent(contextArchive, Archive::class.java)
+                                    contextArchive.startActivity(intent)
+
                                 },
                             verticalAlignment = Alignment.CenterVertically
                         ) {
@@ -185,14 +189,16 @@ class Notes : ComponentActivity() {
 
                         Spacer(Modifier.height(10.dp))
 
+                        val contextTrash = LocalContext.current
+
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .height(47.dp)
                                 .clickable {
-                                    Toast
-                                        .makeText(localView, "Lixeira", Toast.LENGTH_SHORT)
-                                        .show()
+                                    val intent = Intent(contextTrash, Trash::class.java)
+                                    contextTrash.startActivity(intent)
+
                                 },
                             verticalAlignment = Alignment.CenterVertically
                         ) {
@@ -246,7 +252,7 @@ class Notes : ComponentActivity() {
                         }
 
                         Spacer(Modifier.height(10.dp))
-
+                        /*
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -275,8 +281,8 @@ class Notes : ComponentActivity() {
 
                         }
 
-                        Spacer(Modifier.height(10.dp))
-
+                        Spacer(Modifier.height(10.dp))*/
+    /*
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -309,7 +315,7 @@ class Notes : ComponentActivity() {
                                 )
 
 
-                        }
+                        }*/
 
 
                     }

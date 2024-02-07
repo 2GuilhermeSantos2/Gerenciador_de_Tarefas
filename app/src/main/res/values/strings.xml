@@ -10,7 +10,7 @@
     <string name="title_activity_anotacoes">Anotacoes</string>
     <string name="title_activity_lembrentes">Lembrentes</string>
     <string name="title_activity_criar_um_novo_marcador">CriarUmNovoMarcador</string>
-    <string name="title_activity_arquivo">Arquivo</string>
+    <string name="title_activity_arquivo">Arquivado</string>
     <string name="title_activity_lixeira">Lixeira</string>
     <string name="title_activity_configuracoes">Configuracoes</string>
     <string name="title_activity_ajuda_efeedback">AjudaEFeedback</string>

@@ -11,7 +11,7 @@
     <string name="title_activity_lembrentes">Lembrentes</string>
     <string name="title_activity_criar_um_novo_marcador">CriarUmNovoMarcador</string>
     <string name="title_activity_arquivo">Arquivado</string>
-    <string name="title_activity_lixeira">Lixeira</string>
+    <string name="title_activity_arquivado">Lixeira</string>
     <string name="title_activity_configuracoes">Configuracoes</string>
     <string name="title_activity_ajuda_efeedback">AjudaEFeedback</string>
     <string name="title_activity_atalhos_do_teclados">AtalhosDoTeclados</string>

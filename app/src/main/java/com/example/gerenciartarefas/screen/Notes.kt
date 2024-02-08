@@ -65,15 +65,16 @@ class Notes : ComponentActivity() {
                         Spacer(modifier = Modifier.height(10.dp))
 
                         val localView = LocalContext.current
+                        val contextNotes = LocalContext.current
 
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .height(47.dp)
                                 .clickable {
-                                    Toast
-                                        .makeText(localView, "Anotações", Toast.LENGTH_SHORT)
-                                        .show()
+                                   val intent = Intent(contextNotes, Notes::class.java)
+                                    contextNotes.startActivity(intent)
+
                                 },
                             verticalAlignment = Alignment.CenterVertically
                         ) {
@@ -329,7 +330,8 @@ class Notes : ComponentActivity() {
                             contentDescription = "",
                             modifier = Modifier.clickable {
                                 scope.launch { drawerState.open() }
-                            })
+                            },
+                            )
                     })
 
             }

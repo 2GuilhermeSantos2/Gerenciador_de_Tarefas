@@ -30,7 +30,12 @@
         <activity
             android:name=".screen.Trash"
             android:exported="false"
-            android:label="@string/title_activity_lixeira"
+            android:label="@string/title_activity_arquivado"
+            android:theme="@style/Theme.GerenciarTarefas" />
+        <activity
+            android:name=".screen.Archive"
+            android:exported="false"
+            android:label="@string/title_activity_arquivado"
             android:theme="@style/Theme.GerenciarTarefas" />
         <activity
             android:name=".CriarUmNovoMarcador"
@@ -38,7 +43,7 @@
             android:label="@string/title_activity_criar_um_novo_marcador"
             android:theme="@style/Theme.GerenciarTarefas" />
         <activity
-            android:name=".screen.Archive"
+            android:name=".screen.Reminder"
             android:exported="false"
             android:label="@string/title_activity_lembrentes"
             android:theme="@style/Theme.GerenciarTarefas" />

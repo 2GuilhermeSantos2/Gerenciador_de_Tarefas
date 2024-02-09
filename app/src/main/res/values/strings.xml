@@ -7,7 +7,7 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
-    <string name="title_activity_anotacoes">Anotacoes</string>
+    <string name="title_activity_anotacoes">Anotações</string>
     <string name="title_activity_lembrentes">Lembrentes</string>
     <string name="title_activity_criar_um_novo_marcador">CriarUmNovoMarcador</string>
     <string name="title_activity_arquivo">Arquivado</string>

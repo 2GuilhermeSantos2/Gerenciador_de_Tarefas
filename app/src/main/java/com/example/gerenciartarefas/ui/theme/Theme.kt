@@ -13,7 +13,10 @@ import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.res.colorResource
+import androidx.core.content.ContextCompat
 import androidx.core.view.WindowCompat
+import com.example.gerenciartarefas.R
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
@@ -57,7 +60,8 @@ fun GerenciarTarefasTheme(
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
-            window.statusBarColor = colorScheme.primary.toArgb()
+            window.statusBarColor = ContextCompat.getColor(view.context,R.color.backgroundCinza)
+            window.navigationBarColor = ContextCompat.getColor(view.context,R.color.backgroundCinza)
             WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
         }
     }

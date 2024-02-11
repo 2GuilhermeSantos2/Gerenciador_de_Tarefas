@@ -5,8 +5,12 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -16,16 +20,23 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.ModalDrawer
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.DrawerValue
+import androidx.compose.material.IconButton
+import androidx.compose.material.LocalContentAlpha
+import androidx.compose.material.LocalContentColor
+import androidx.compose.material.Text
+import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
-import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material.rememberDrawerState
-import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material.OutlinedTextField
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -38,19 +49,28 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Path.Companion.combine
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.gerenciartarefas.R
+import com.example.gerenciartarefas.SearchBar.MyTopAppBar
 import com.example.gerenciartarefas.ui.theme.GerenciarTarefasTheme
+import com.google.android.material.search.SearchBar
+import com.google.protobuf.Empty
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
+import androidx.compose.material3.Text as Text1
 
 
 class Notes : ComponentActivity() {
@@ -75,7 +95,7 @@ class Notes : ComponentActivity() {
                                 )
                                 .fillMaxSize()
                         ) {
-                            Text(
+                            Text1(
                                 text = "Bloco de Notas",
                                 color = Color.White,
                                 fontSize = 30.sp
@@ -101,7 +121,7 @@ class Notes : ComponentActivity() {
                                 )
 
                                 Spacer(Modifier.width(25.dp))
-                                Text(
+                                Text1(
                                     text = "Anotações",
                                     color = Color.White,
                                     fontSize = 20.sp,
@@ -131,7 +151,7 @@ class Notes : ComponentActivity() {
                                 )
 
                                 Spacer(Modifier.width(25.dp))
-                                Text(
+                                Text1(
                                     text = "Lembrentes",
                                     color = Color.White,
                                     fontSize = 20.sp,
@@ -163,7 +183,7 @@ class Notes : ComponentActivity() {
                                 )
 
                                 Spacer(Modifier.width(25.dp))
-                                Text(
+                                Text1(
                                     text = "Criar um novo marcador",
                                     color = Color.White,
                                     fontSize = 20.sp,
@@ -195,7 +215,7 @@ class Notes : ComponentActivity() {
                                 )
 
                                 Spacer(Modifier.width(25.dp))
-                                Text(
+                                Text1(
                                     text = "Arquivar",
                                     color = Color.White,
                                     fontSize = 20.sp,
@@ -228,7 +248,7 @@ class Notes : ComponentActivity() {
 
                                 Spacer(Modifier.width(25.dp))
 
-                                Text(
+                                Text1(
                                     text = "Lixeira",
                                     color = Color.White,
                                     fontSize = (20.sp),
@@ -259,7 +279,7 @@ class Notes : ComponentActivity() {
 
                                 Spacer(Modifier.width(25.dp))
 
-                                Text(
+                                Text1(
                                     text = "Configurações",
                                     color = Color.White,
                                     fontSize = (20.sp),
@@ -339,61 +359,16 @@ class Notes : ComponentActivity() {
 
                     }
                 ) {
-                    Column(
-                        modifier = Modifier
-                            .background(color = colorResource(id = R.color.backgroundCinza))
-                            .fillMaxSize()
-                    ) {
-                        val scope = rememberCoroutineScope()
-                        var showClearButton by remember{ mutableStateOf(false) }
-                        val keyboardController = LocalSoftwareKeyboardController.current
-                        val focusRequester = remember {FocusRequester()}
-                        val searchBarVal = remember {
-                            mutableStateOf("")
-                        }
 
-                        LaunchedEffect(Unit){
-                            focusRequester.requestFocus()
-                        }
+                    MyTopAppBar(searchText = "FUNCIONA DESGRAÇA")
 
-                        OutlinedTextField(onValueChange = {it:String ->
-                                                          searchBarVal.value = it
-                        },
-                            value = searchBarVal.value,
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(vertical = 2.dp)
-                                .onFocusChanged { focusState -> showClearButton =  (focusState.isFocused) }
-                            )
-                            focusRequester(focusRequester)
 
-                        TopAppBar(
-                            title = {
-                                Row {
-                                    Spacer(modifier = Modifier.width(25.dp))
-                                    Text(
-                                        text = stringResource(R.string.title_activity_anotacoes),
-                                        color = Color.White
-                                    )
-                                }
-                            },
-                            navigationIcon = {
-                                Icon(
-                                    Icons.Filled.Menu,
-                                    contentDescription = "",
-                                    modifier = Modifier.clickable {
-                                        scope.launch { drawerState.open() }
-                                    }, tint = Color.White
-                                )
-                            },
-                            colors = TopAppBarDefaults.smallTopAppBarColors(colorResource(id = R.color.backgroundCinza))
-                        )
                     }
 
 
                 }
 
-                //
+
 
 
             }
@@ -403,8 +378,6 @@ class Notes : ComponentActivity() {
     }
 
 
-    }
-
 
 
 @Preview(showBackground = true)
@@ -412,3 +385,6 @@ class Notes : ComponentActivity() {
 fun GreetingPreview() {
 
 }
+
+
+
